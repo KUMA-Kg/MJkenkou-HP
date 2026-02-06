@@ -1,0 +1,1058 @@
+import React, { useState, useEffect } from 'react';
+
+const MJConstructionSite = () => {
+const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+const toggleMenu = () => {
+setIsMenuOpen(!isMenuOpen);
+};
+
+const scrollToTop = () => {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+return (
+<>
+  <style jsx global>
+    {
+      ` @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@100;200;300;400;500;600;700&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP:wght@100..900&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+        height: 100%;
+      }
+
+      body {
+        font-size: 16px;
+        line-height: 1.5;
+        font-family: "IBM Plex Sans JP", "游ゴシック体", "Yu Gothic", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+        font-weight: 400;
+        color: rgba(0, 0, 0, .8);
+        background: #ffffff;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: rgba(0, 0, 0, .8);
+        display: block;
+        text-decoration: none;
+        transition: all .5s ease-in-out;
+      }
+
+      img {
+        vertical-align: middle;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+      }
+
+      ul,
+      ol {
+        list-style: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: 100%;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+      }
+
+      /* Header Styles */
+      #header {
+        position: fixed;
+        width: 100%;
+        height: 80px;
+        /* Increased height to match target */
+        padding: 0 4.2vw;
+        background-color: #ffffff;
+        z-index: 8888;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        /* Ensure spacing */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s ease-out;
+      }
+
+      .head-logo {
+        line-height: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .head-logo a {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .head-logo img {
+        height: 50px;
+        /* Adjusted logo size */
+        width: auto;
+        object-fit: contain;
+      }
+
+      .header-action {
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+      }
+
+      .header-action ul {
+        display: flex;
+        align-items: center;
+      }
+
+      .header-action li:first-child {
+        margin-right: 3vw;
+      }
+
+      .header-action li a {
+        color: #3d3d6b;
+      }
+
+      .header-tel {
+        display: none;
+      }
+
+      .header-contact a {
+        line-height: 1.7;
+        letter-spacing: -0.1vw;
+        padding: 1vw 2.5vw 0.5vw;
+        background-color: #ff6b8a;
+        color: #fff;
+        white-space: nowrap;
+        border-radius: 4px;
+      }
+
+      .menu-btn {
+        width: 36px;
+        height: 20px;
+        z-index: 500;
+        position: relative;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        margin-left: 20px;
+      }
+
+      .menu-btn>span {
+        width: 100%;
+        height: 2px;
+        display: block;
+        background-color: #3d3d6b;
+        position: absolute;
+        transform-origin: center;
+        transition: all 0.3s;
+      }
+
+      .menu-btn>span:first-child {
+        top: 0;
+        left: 0;
+      }
+
+      .menu-btn>span:nth-child(2) {
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+      }
+
+      .menu-btn>span:last-child {
+        bottom: 0;
+        left: 0;
+      }
+
+      .is-opened .menu-btn>span:first-child {
+        transform: translateY(9px) rotate(45deg);
+      }
+
+      .is-opened .menu-btn>span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .is-opened .menu-btn>span:last-child {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+
+      #gnav-menu {
+        font-family: "Noto Sans JP", sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        display: none;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100svh;
+        width: 100vw;
+        padding: 10rem 0 0;
+        z-index: 300;
+        overflow: scroll;
+        background-color: rgba(255, 255, 255, .95);
+      }
+
+      .is-opened #gnav-menu {
+        display: block;
+      }
+
+      #gnav-menu li {
+        padding-top: 10vw;
+        width: 100%;
+      }
+
+      #gnav-menu li:first-child {
+        padding-top: 0;
+      }
+
+      #gnav-menu li span {
+        font-size: 16px;
+        display: block;
+      }
+
+      #gnav-menu a {
+        color: #3d3d6b;
+        position: relative;
+      }
+
+      /* Main Visual */
+      #main-visual {
+        position: relative;
+        width: 100vw;
+        height: 100svh;
+        overflow: hidden;
+        background-color: #f5f5f5;
+      }
+
+      #main-visual img {
+        filter: brightness(.9);
+        object-fit: cover;
+        width: 100vw;
+        min-width: 100%;
+        min-height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        object-position: 80% 0;
+      }
+
+      .main-v-tagline {
+        width: 100vw;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        text-align: center;
+      }
+
+      .main-v-tagline h1 {
+        font-family: "Noto Sans JP", sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 0.3vw;
+        color: #fff;
+        background-color: rgba(255, 85, 85, 0.85);
+        padding: 1.2rem 5%;
+        line-height: 1.2;
+        filter: drop-shadow(1px 1px 1.5px rgb(0, 0, 0, 0.4));
+      }
+
+      .main-v-tagline h1 span {
+        font-size: 2rem;
+      }
+
+      .sc-down {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+      }
+
+      .sc-down span {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        color: #eee;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        writing-mode: vertical-rl;
+      }
+
+      .sc-down:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #eee;
+        animation: circlemove 1.6s ease-in-out infinite, cirlemovehide 1.6s ease-out infinite;
+      }
+
+      .sc-down:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 2px;
+        height: 50px;
+        background: #eee;
+      }
+
+      @keyframes circlemove {
+        0% {
+          bottom: -5px;
+        }
+
+        100% {
+          bottom: 45px;
+        }
+      }
+
+      @keyframes cirlemovehide {
+        0% {
+          opacity: 0;
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        80% {
+          opacity: 0.9;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* Main Content */
+      main {
+        width: 100%;
+        font-size: 14px;
+        letter-spacing: 0.3vw;
+        line-height: 2;
+      }
+
+      .column {
+        width: 90%;
+        margin: 0 auto;
+        padding: 12vw 0 10vw;
+      }
+
+      h2 {
+        font-size: 13px;
+        color: #ff6b8a;
+        font-family: "Noto Sans JP", sans-serif;
+        font-weight: bold;
+        letter-spacing: -0.01rem;
+        position: relative;
+        padding: 8vw 0 0 5vw;
+      }
+
+      h2::after {
+        content: '';
+        position: absolute;
+        bottom: -3vw;
+        left: 0;
+        width: 95%;
+        height: 1px;
+        margin: 0 auto;
+        background: linear-gradient(to right, transparent, #ff6b8a 0%, #ff6b8a 60%, transparent) no-repeat;
+      }
+
+      h2 span {
+        display: block;
+        font-size: 24px;
+        color: rgba(0, 0, 0, .8);
+      }
+
+      /* About Section */
+      #about {
+        background: linear-gradient(to left, transparent 0 5%, #ffffff 60% 100%), url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' fill='%23f5f5f5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      #about .column {
+        padding-bottom: 24vw;
+      }
+
+      #about h2 span {
+        color: #3d3d6b;
+      }
+
+      /* Point Section */
+      #point {
+        width: 90%;
+        margin: -8% auto 12%;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-size: cover;
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        filter: drop-shadow(8px 8px 0px rgba(61, 61, 107, 0.1));
+      }
+
+      #point .column {
+        padding-top: 10vw;
+      }
+
+      #point h2 {
+        text-align: center;
+        padding-left: 0;
+      }
+
+      #point h2::after {
+        height: 0;
+      }
+
+      #point .flex-box {
+        display: flex;
+        flex-direction: column;
+      }
+
+      #point .flex-box li {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .more-btn {
+        width: 100%;
+        text-align: center;
+        height: auto;
+        margin: 5vw auto 3vw;
+        border: 2px solid #ff6b8a;
+        background-color: #fff;
+        display: block;
+        /* Ensure it's a block for centering content */
+      }
+
+      .more-btn a {
+        font-weight: 600;
+        padding: 3vw 0;
+        margin: 0 auto;
+        color: #ff6b8a;
+        transition: all .5s ease-in-out;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      #point .more-btn {
+        background-color: #fff;
+      }
+
+      .more-btn a:hover {
+        color: #fff;
+        background: #ff6b8a;
+      }
+
+      /* Business Section - Redesigned to Zigzag */
+      #business {
+        background-color: #fff5f7;
+      }
+
+      #business h2 {
+        text-align: center;
+        width: 85%;
+        margin: 0 auto 5vw auto;
+        /* Added margin bottom */
+        padding-left: 0;
+      }
+
+      #business h2::after {
+        bottom: -3vw;
+        height: 1px;
+        background: linear-gradient(to left, transparent, #ff6b8a 25%, #ff6b8a 75%, transparent) no-repeat;
+      }
+
+      #business h3 {
+        font-family: "Noto Serif JP", serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #3d3d6b;
+        text-align: left;
+        /* Align left for zigzag text */
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+      }
+
+      #business p {
+        text-align: left;
+        line-height: 1.8;
+      }
+
+      #business .flex-box {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 8vw;
+        background: #fff;
+        /* Card like appearance if needed, otherwise transparent */
+        align-items: center;
+        /* Center items on mobile */
+      }
+
+      #business figure {
+        width: 100%;
+      }
+
+      #business figure img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .business-text {
+        padding: 5%;
+        width: 100%;
+      }
+
+      /* Recruit Section - Redesigned to Overlay */
+      #recruit {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50vh;
+        /* Ensure height */
+        color: #fff;
+        /* White text for overlay */
+      }
+
+      #recruit>figure {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      #recruit>figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.6);
+        /* Darken image for readability */
+      }
+
+      #recruit .column {
+        position: relative;
+        /* Sit on top of image */
+        z-index: 2;
+        text-align: center;
+        width: 100%;
+        max-width: 1200px;
+        padding: 10vw 5vw;
+        /* Generous padding */
+      }
+
+      #recruit h2 {
+        color: #fff;
+        /* White title */
+        text-align: center;
+        padding: 0;
+        width: auto;
+        margin-bottom: 3rem;
+      }
+
+      #recruit h2::after {
+        background: linear-gradient(to left, transparent, #fff 25%, #fff 75%, transparent) no-repeat;
+        /* White underline */
+      }
+
+      #recruit h2 span {
+        color: #fff;
+      }
+
+      #recruit h3 {
+        font-size: 22px;
+        /* Large tagline */
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 3vw;
+        color: #fff;
+      }
+
+      #recruit .column p {
+        padding-bottom: 5vw;
+        color: #f0f0f0;
+        margin-bottom: 2rem;
+      }
+
+      .recruit-requirements {
+        /* Hide the specific requirements box for the cleaner 'Hero' look, or style it as a modal/separate section if strictly needed to be visible. 
+                For this design (Hero banner), usually details are on a separate page. 
+                However, to preserve content, we will style them to fit or sit below.
+                Let's keep them visible but styled nicely transparently or below.
+             */
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        padding: 2rem;
+        color: #333;
+        /* Reset text color for this box */
+        text-align: left;
+        margin-top: 2rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .recruit-requirements h4,
+      .recruit-requirements h5,
+      .recruit-requirements p,
+      .recruit-requirements div {
+        color: #333 !important;
+        /* Force override user inline styles if possible, but inline styles win. We will remove inline styles in JSX later */
+      }
+
+
+      /* Footer */
+      #footer {
+        background: #3d3d6b;
+        color: #fff;
+      }
+
+      #footer a {
+        color: #fff;
+      }
+
+      #footer h2 {
+        text-align: center;
+        width: 85%;
+        margin: 0 auto;
+        color: #fff;
+        padding-left: 0;
+      }
+
+      #footer h2::after {
+        bottom: -3vw;
+        height: 1px;
+        background: linear-gradient(to left, transparent, #fff 25%, #fff 75%, transparent) no-repeat;
+      }
+
+      #footer h2 span {
+        color: #fff;
+      }
+
+      .secondary {
+        padding: 12vw 0 10vw;
+      }
+
+      .footer-action {
+        margin: 10vw auto 8vw;
+        padding: 3vw 0;
+        text-align: center;
+        border: 1px solid #fff;
+      }
+
+      .footer-action li {
+        font-size: 30px;
+        letter-spacing: 0.4vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .footer-action li span {
+        font-size: 16px;
+      }
+
+      .footer-action li:first-child {
+        margin-bottom: 1vw;
+      }
+
+      .foot-btn {
+        background-color: #ff5555;
+        border: 2px solid #ff5555;
+      }
+
+      .foot-btn a {
+        color: #fff;
+      }
+
+      .footer-map {
+        height: 450px;
+        margin-bottom: 3vw;
+      }
+
+      .footer-map iframe {
+        width: 100%;
+        height: 450px;
+        border: none;
+      }
+
+      #footer nav .flex-box {
+        font-size: 12px;
+        font-weight: 600;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5vw 3.5vw;
+        padding-top: 9vw;
+      }
+
+      .footer-logo {
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+        text-align: center;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid #fff;
+      }
+
+      .footer-logo img {
+        width: auto;
+        height: 3.3rem;
+      }
+
+      #footer small {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 3vw 0;
+        display: block;
+        font-size: 10px;
+      }
+
+      #pageTop {
+        display: block;
+        position: fixed;
+        text-align: center;
+        right: 24px;
+        bottom: 24px;
+        line-height: 24px;
+        padding: 8px 16px;
+        font-size: 24px;
+        z-index: 9999;
+        cursor: pointer;
+        color: #ff6b8a;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Tablet & Desktop */
+      @media screen and (min-width: 769px) {
+
+        /* Header Desktop */
+        .header-tel {
+          display: block;
+          font-size: 20px;
+        }
+
+        .header-tel span {
+          font-size: 13px;
+        }
+
+        .header-action li:first-child {
+          margin-right: 2rem;
+        }
+
+        #header {
+          padding: 0 5vw;
+        }
+
+        #pageTop {
+          display: none;
+        }
+
+        /* Business Section Zigzag */
+        #business .column {
+          max-width: 1200px;
+        }
+
+        #business .flex-box {
+          flex-direction: row;
+          /* Row direction for desktop */
+          justify-content: space-between;
+          align-items: center;
+          /* Vertical center alignment */
+          gap: 5%;
+          /* Gap between image and text */
+          margin-bottom: 100px;
+          /* Spaciousness */
+          background: transparent;
+        }
+
+        #business figure {
+          width: 50%;
+          /* Image takes 50% */
+          margin-bottom: 0;
+        }
+
+        .business-text {
+          width: 45%;
+          /* Text takes 45% */
+          padding: 0;
+        }
+
+        /* Zigzag: Even children reversed */
+        #business .flex-box:nth-child(even) {
+          flex-direction: row-reverse;
+        }
+
+        /* Recruit adjustments */
+        #recruit .column {
+          padding: 100px 0;
+        }
+
+        .recruit-requirements {
+          padding: 3rem;
+        }
+      }
+
+      `
+    }
+  </style>
+
+  <div className={isMenuOpen ? 'is-opened' : '' }>
+    <header id="header">
+      <div className="head-logo">
+        <a href="#">
+          <img src="logo.jpg" alt="株式会社エムジェイ建工" />
+        </a>
+      </div>
+      <div className="header-action">
+        <ul>
+          <li className="header-tel">
+            <a href="tel:048-423-0547"><span>tel.</span>048-423-0547</a>
+          </li>
+          <li className="header-contact">
+            <a href="#contact">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+      <div className="gnav-trigger">
+        <button className="menu-btn" onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div className="menu-body">
+        <nav id="gnav">
+          <ul id="gnav-menu">
+            <li>
+              <a href="#policy" onClick={toggleMenu}><span>エムジェイ建工の想い</span>POLICY</a>
+            </li>
+            <li>
+              <a href="#company" onClick={toggleMenu}><span>会社情報</span>COMPANY</a>
+            </li>
+            <li>
+              <a href="#business" onClick={toggleMenu}><span>事業内容</span>BUSINESS</a>
+            </li>
+            <li>
+              <a href="#recruit" onClick={toggleMenu}><span>採用情報</span>RERCRUIT</a>
+            </li>
+            <li>
+              <a href="#contact" onClick={toggleMenu}><span>お問い合わせ</span>CONTACT</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main">
+      <section id="main-visual">
+        <img
+          src="data:image/svg+xml,%3Csvg width='1200' height='800' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1200' height='800' fill='%23ffffff'/%3E%3Crect x='20' y='20' width='1160' height='760' fill='none' stroke='%23dddddd' stroke-width='4' stroke-dasharray='20,10'/%3E%3Ctext x='50%25' y='45%25' text-anchor='middle' font-size='48' fill='%23999999' font-family='sans-serif' font-weight='bold'%3Eダミー画像%3C/text%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' font-size='32' fill='%23cccccc' font-family='sans-serif'%3E1200 x 800%3C/text%3E%3C/svg%3E"
+          alt="" />
+        <div className="main-v-tagline">
+          <h1><span>環境</span>を守り、<br /><span>地域社会</span>に必要とされる企業へ</h1>
+        </div>
+        <div className="sc-down">
+          <span>Scroll</span>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2><span>地域と未来を支える安心の施工を</span></h2>
+        <div className="column">
+          <div className="footer-map">
+            <img
+              src="data:image/svg+xml,%3Csvg width='1200' height='450' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1200' height='450' fill='%23ffffff'/%3E%3Crect x='20' y='20' width='1160' height='410' fill='none' stroke='%23dddddd' stroke-width='4' stroke-dasharray='20,10'/%3E%3Ctext x='50%25' y='45%25' text-anchor='middle' font-size='36' fill='%23999999' font-family='sans-serif' font-weight='bold'%3E%E3%83%80%E3%83%9F%E3%83%BC%E7%94%BB%E5%83%8F%3C/text%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' font-size='24' fill='%23cccccc' font-family='sans-serif'%3E1200 x 450%3C/text%3E%3C/svg%3E"
+              alt="ダミー画像" style={{ width: '100%' , height: '450px' , objectFit: 'cover' }} />
+          </div>
+          <p>
+            株式会社エムジェイ建工は、
+            <br />
+            宅地造成工事、道路工事、
+            <br />
+            舗装工事を通じて
+            <br />
+            地域社会の発展に貢献しています。
+            <br />
+            長年培った技術力と信頼をもとに、
+            <br />
+            安全で高品質な施工をお届けします。
+            <br />
+            私たちは、お客様のニーズに
+            <br />
+            しっかりと寄り添い、
+            <br />
+            理想の住環境づくりをサポートします。
+          </p>
+        </div>
+      </section>
+
+      <section id="point">
+        <h2><span>エムジェイ建工の想い</span>POLICY</h2>
+        <div className="column">
+          <ul className="flex-box">
+            <li>未来の街づくりを考えるエムジェイ建工。環境に優しい施工で、次世代に繋がる安心を届けます。</li>
+          </ul>
+          <div className="more-btn">
+            <a href="#policy">もっと知る</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="business" className="bg-yellow">
+        <h2><span>事業内容</span>BUSINESS</h2>
+        <div className="column">
+          <div className="flex-box">
+            <figure>
+              <img
+                src="data:image/svg+xml,%3Csvg width='800' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='800' height='600' fill='%23ffffff'/%3E%3Crect x='20' y='20' width='760' height='560' fill='none' stroke='%23dddddd' stroke-width='4' stroke-dasharray='20,10'/%3E%3Ctext x='50%25' y='45%25' text-anchor='middle' font-size='36' fill='%23999999' font-family='sans-serif' font-weight='bold'%3Eダミー画像%3C/text%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' font-size='24' fill='%23cccccc' font-family='sans-serif'%3E800 x 600%3C/text%3E%3C/svg%3E"
+                alt="" />
+            </figure>
+            <div className="business-text">
+              <h3>❖ 宅地造成工事 ❖</h3>
+              <p>住宅等を建てるための土地整備や地盤改良を行っています。</p>
+            </div>
+          </div>
+          <div className="flex-box">
+            <figure>
+              <img
+                src="data:image/svg+xml,%3Csvg width='800' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='800' height='600' fill='%23ffffff'/%3E%3Crect x='20' y='20' width='760' height='560' fill='none' stroke='%23dddddd' stroke-width='4' stroke-dasharray='20,10'/%3E%3Ctext x='50%25' y='45%25' text-anchor='middle' font-size='36' fill='%23999999' font-family='sans-serif' font-weight='bold'%3Eダミー画像%3C/text%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' font-size='24' fill='%23cccccc' font-family='sans-serif'%3E800 x 600%3C/text%3E%3C/svg%3E"
+                alt="" />
+            </figure>
+            <div className="business-text">
+              <h3>❖ 道路工事 ❖</h3>
+              <p>安全で快適な道路環境を整備し、地域のインフラを支えます。</p>
+            </div>
+          </div>
+
+          <div className="more-btn">
+            <a href="#business">もっとみる</a>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="recruit">
+        <figure>
+          <img
+            src="data:image/svg+xml,%3Csvg width='1200' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1200' height='400' fill='%23ffffff'/%3E%3Crect x='20' y='20' width='1160' height='360' fill='none' stroke='%23dddddd' stroke-width='4' stroke-dasharray='20,10'/%3E%3Ctext x='50%25' y='45%25' text-anchor='middle' font-size='36' fill='%23999999' font-family='sans-serif' font-weight='bold'%3Eダミー画像%3C/text%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' font-size='24' fill='%23cccccc' font-family='sans-serif'%3E1200 x 400%3C/text%3E%3C/svg%3E"
+            alt="" />
+        </figure>
+        <div className="column">
+          <h2><span>採用情報</span>RECRUIT</h2>
+          <h3>地域と未来を支える仕事に、あなたの力を。</h3>
+          <p>エムジェイ建工は、地域社会に貢献し、未来をつくる仕事を通じて安心と信頼を届けています。地域のために力を発揮したいという方は、ぜひご応募ください。</p>
+
+          <div className="recruit-requirements">
+            <h4 style={{ fontSize: '20px' , fontWeight: '600' , color: '#3d3d6b' , marginBottom: '4vw' ,
+              textAlign: 'center' }}>募集職種</h4>
+
+            <div style={{ padding: '4vw' , backgroundColor: '#ffffff' , borderRadius: '8px' ,
+              border: '2px solid #ff6b8a' }}>
+              <h5 style={{ fontSize: '18px' , fontWeight: '600' , color: '#ff6b8a' , marginBottom: '3vw' }}>採用条件</h5>
+              <div style={{ fontSize: '14px' , lineHeight: '2' , color: 'rgba(0,0,0,0.8)' }}>
+                <p style={{ marginBottom: '2vw' }}>年齢　経験等問いません</p>
+                <p style={{ marginBottom: '2vw' }}>経験者　中型免許</p>
+                <p style={{ marginBottom: '0' }}>車両系免許保有者優遇します</p>
+              </div>
+            </div>
+          </div>
+          <div className="more-btn" style={{marginTop: '3rem' }}>
+            <a href="#recruit">詳しくみる</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="footer">
+      <div className="column secondary" id="contact">
+        <h2><span>お問い合わせ</span>CONTACT</h2>
+        <ul className="footer-action font-osw">
+          <li>
+            <a href="tel:048-423-0547"><span>tel.</span>048-423-0547</a>
+          </li>
+        </ul>
+        <div className="more-btn foot-btn">
+          <a href="#contact">お問い合わせフォーム</a>
+        </div>
+      </div>
+
+      <div className="column">
+        <div className="footer-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.2727586559404!2d139.71284207629924!3d35.7502890728089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5c5c5c5c5c%3A0x5c5c5c5c5c5c5c5c!2z5Z-8546J55yM5bed5Y-j5biC6Iqd5LiL77yS5LiB55uu77yR77yX4oiS77yR77yZ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp"
+            loading="lazy"></iframe>
+        </div>
+        <div id="pageTop" onClick={scrollToTop}>
+          ↑
+        </div>
+        <nav>
+          <ul className="flex-box">
+            <li>
+              <a href="#policy">エムジェイ建工の想い</a>
+            </li>
+            <li>
+              <a href="#company">会社概要</a>
+            </li>
+            <li>
+              <a href="#business">事業内容</a>
+            </li>
+            <li>
+              <a href="#recruit">採用情報</a>
+            </li>
+            <li>
+              <a href="#contact">お問い合わせ</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div className="footer-logo">
+        <img
+          src="data:image/svg+xml,%3Csvg width='200' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='40' font-family='Arial' font-size='20' font-weight='bold' fill='white'%3E株式会社%3C/text%3E%3Ctext x='10' y='55' font-family='Arial' font-size='12' font-weight='bold' fill='white'%3Eエムジェイ建工%3C/text%3E%3C/svg%3E"
+          alt="株式会社エムジェイ建工" />
+      </div>
+
+      <small>© 株式会社エムジェイ建工</small>
+    </footer>
+  </div>
+</>
+);
+};
+
+export default MJConstructionSite;

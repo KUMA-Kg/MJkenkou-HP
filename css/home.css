@@ -1,0 +1,280 @@
+@charset "UTF-8";
+
+#main-visual {
+	position: relative;
+	width: 100vw;
+    height: 100svh;
+	overflow: hidden;
+	background-color: #CAEBE4;
+}
+
+#about {
+	background: linear-gradient(to left, transparent 0 5%, #f0f0f0 60% 100%), url("../img/sample/sub_V_sample005.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#about .column {
+	padding-bottom: 24vw;
+}
+
+/*
+#about::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(180deg, transparent 0 30%, #FFF 70% 100%);
+}*/
+
+#point {
+	width: 90%;
+	margin: -8% auto 12%;
+	background-image: url("../img/home/top_point_bg.jpg");
+	background-color: rgba(255,255,255,0.9);
+	background-blend-mode:lighten;
+	background-size: cover;
+	background-position: 50% 0;
+	background-repeat: no-repeat;
+	filter: drop-shadow(8px 8px 0px rgb(0, 0, 0, 0.1));
+}
+
+#business {
+}
+
+#case {
+}
+
+#recruit {
+}
+
+#sdgs {
+	padding: 10vw 5%;
+}
+
+#sdgs p {
+	width: 95%;
+	margin: 0 auto;
+}
+
+
+
+#main-visual video {
+	filter: brightness(0.6);
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#main-visual img {
+	object-fit: cover;
+	width: 100vw;
+	min-width: 100%;
+    min-height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.main-v-tagline {
+	width: 100vw;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	text-align: center;
+}
+
+/*
+#main-visual img {
+	width: 55vw;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    transform: translate(-50%, -50%);
+	z-index: 100;
+}*/
+
+.sc-down {
+    /*描画位置※位置は適宜調整してください*/
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+}
+
+/*Scrollテキストの描写*/
+.sc-down span {
+    /*描画位置*/
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+    /*テキストの形状*/
+	color: #eee;
+	font-size: 0.7rem;
+	letter-spacing: 0.05em;
+	/*縦書き設定*/
+	-ms-writing-mode: tb-rl;
+	-webkit-writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
+}
+
+/* 丸の描写 */
+.sc-down:before {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    /*丸の形状*/
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background:#eee;
+    /*丸の動き1.6秒かけて透過し、永遠にループ*/
+	animation:
+		circlemove 1.6s ease-in-out infinite,
+		cirlemovehide 1.6s ease-out infinite;
+}
+
+/* 下からの距離が変化して丸の全体が上から下に動く */
+@keyframes circlemove {
+	0% {bottom: -5px;}
+	100% {bottom: 45px;}
+ }
+
+/* 上から下にかけて丸が透過→不透明→透過する */
+@keyframes cirlemovehide {
+	0%{opacity: 0}
+	50%{opacity: 1;}
+	80%{opacity: 0.9;}
+	100%{opacity: 0;}
+}
+
+/* 線の描写 */
+.sc-down:after {
+	content: "";
+	/*描画位置*/
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	/*線の形状*/
+	width: 2px;
+	height: 50px;
+	background: #eee;
+}
+
+
+
+#point .flex-box > li {
+	display: flex;
+	flex-direction: column;
+}
+
+#point .flex-box ol {
+	width: 100%;
+	list-style-type: decimal;
+	padding: 6vw 0;
+}
+
+#point .flex-box ol li {
+	display: list-item;
+	margin-left: 2em;
+}
+
+#business figure img {
+	margin-bottom: 1rem;
+}
+
+#case > figure img,
+#recruit > figure img {
+	width: 100%;
+	height: 40vw;
+	object-fit: cover;
+}
+
+#case .flex-box {
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0.75vw 1.5vw;
+}
+
+#case .flex-box::after,
+#gallery .flex-box::after {
+    content: '';
+    width: 100%;
+}
+
+#case .flex-box {
+	margin-top: 8vw;
+}
+
+#case .flex-box li {
+	width: calc(50% - 0.75vw);
+}
+
+#recruit .column p {
+	padding-bottom: 5vw;
+}
+
+#case .flex-box li:nth-child(n+3),
+#gallery .flex-box li:ntn-child(n+3) {
+    order: 1;
+}
+
+#gallery .flex-box {
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#gallery .flex-box li {
+	width: 50%;
+	height: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #fff;
+	background: #DBD9B2;
+	font-weight: 600;
+	font-size: 24px;
+}
+
+
+#gallery .flex-box img {
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 8 / 5;
+	object-fit: cover;
+}
+
+
+
+
+
+/***** FOR PC *****/
+@media screen and (min-width: 961px) {
+	
+}
+
+
+
+
+
+@media screen and (min-width: 769px) {
+	
+	#point .flex-box {
+		flex-direction: column;
+	}
+	
+	#point .flex-box li {
+		flex-direction: row;
+	}
+	
+	#point .flex-box li:last-child figure {
+		order: 2;
+	}
+	
+}
