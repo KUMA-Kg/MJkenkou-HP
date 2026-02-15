@@ -1,7 +1,7 @@
 export const siteConfig = {
     brand: {
         companyName: "株式会社エムジェイ建工",
-        logoPath: "/logo.jpg", // Kept original path or check if it is in images now
+        logoPath: "/images/logo.jpg", // Kept original path or check if it is in images now
         tel: "048-423-0547",
         telLink: "tel:048-423-0547",
         address: "〒332-0002 埼玉県川口市弥平2-17-19",
