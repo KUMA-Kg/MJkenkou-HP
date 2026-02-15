@@ -16,7 +16,7 @@ export const siteConfig = {
     },
 
     hero: {
-        image: "/images/hero_visual.png",
+        image: "/images/hero_visual_v2.png",
         headlineHtml: "<span>環境</span>を守り、<br /><span>地域社会</span>に必要とされる企業へ",
     },
 
@@ -34,7 +34,7 @@ export const siteConfig = {
             "理想の住環境づくりをサポートします。",
         ],
         mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.2727586559404!2d139.71284207629924!3d35.7502890728089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5c5c5c5c5c%3A0x5c5c5c5c5c5c5c5c!2z5Z-8546J55yM5bed5Y-j5biC6Iqd5LiL77yS5LiB55uu77yR77yX4oiS77yR77yZ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp",
-        image: "/images/about_visual_new.png"
+        image: "/images/about_visual_new_v2.png"
     },
 
     policy: {
@@ -46,8 +46,8 @@ export const siteConfig = {
     business: {
         title: "事業内容",
         items: [
-            { title: "❖ 宅地造成工事 ❖", desc: "住宅等を建てるための土地整備や地盤改良を行っています。", image: "/images/business_land.png" },
-            { title: "❖ 道路工事 ❖", desc: "安全で快適な道路環境を整備し、地域のインフラを支えます。", image: "/images/business_road_new.png" },
+            { title: "❖ 宅地造成工事 ❖", desc: "住宅等を建てるための土地整備や地盤改良を行っています。", image: "/images/business_land_v2.png" },
+            { title: "❖ 道路工事 ❖", desc: "安全で快適な道路環境を整備し、地域のインフラを支えます。", image: "/images/business_road_new_v2.png" },
         ],
     },
 
