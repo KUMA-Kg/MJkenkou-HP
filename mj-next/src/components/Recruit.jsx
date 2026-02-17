@@ -37,7 +37,7 @@ const Recruit = ({ cfg }) => {
                 <h2><span>{cfg.recruit.title}</span>RECRUIT</h2>
 
                 <h3>{cfg.recruit.headline}</h3>
-                <p>{cfg.recruit.body}</p>
+                <p style={{ whiteSpace: "pre-line" }}>{cfg.recruit.body}</p>
 
                 {/* Requirements Box */}
                 <div className="recruit-requirements" style={{ backgroundColor: 'rgba(255,255,255,0.9)', border: '1px solid #ddd' }}>
