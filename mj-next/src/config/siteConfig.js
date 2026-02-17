@@ -34,7 +34,7 @@ export const siteConfig = {
       "理想の住環境づくりをサポートします。",
     ],
     mapEmbedUrl:
-      "https://maps.app.goo.gl/WJ1PimnTUgERtChaA",
+      "https://www.google.com/maps/place/35%C2%B050'15.1%22N+139%C2%B042'13.8%22E/@35.837468,139.7038403,21z/data=!4m4!3m3!8m2!3d35.8375318!4d139.7038372!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D",
     image: "/images/about_visual_new_v3.png",
   },
 
