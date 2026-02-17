@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .head-logo img {
-  height: 1.7rem;
+  height: 2.7rem;
 }
 
 .header-action {
