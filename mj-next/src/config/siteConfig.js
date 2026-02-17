@@ -34,7 +34,7 @@ export const siteConfig = {
       "理想の住環境づくりをサポートします。",
     ],
     mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.2727586559404!2d139.71284207629924!3d35.7502890728089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5c5c5c5c5c%3A0x5c5c5c5c5c5c5c5c!2z5Z-8546J55yM5bed5Y-j5biC6Iqd5LiL77yS5LiB55uu77yR77yX4oiS77yR77yZ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp",
+      "https://www.google.com/maps/place/35%C2%B050'15.1%22N+139%C2%B042'13.8%22E/@35.8375318,139.7012623,17z/data=!3m1!4b1!4m4!3m3!8m2!3d35.8375318!4d139.7038372!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D",
     image: "/images/about_visual_new_v3.png",
   },
 
