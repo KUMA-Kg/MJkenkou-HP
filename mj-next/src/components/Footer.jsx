@@ -15,9 +15,6 @@ const Footer = ({ cfg }) => {
                         <a href={cfg.brand.telLink}><span>tel.</span>{cfg.brand.tel}</a>
                     </li>
                 </ul>
-                <div className="more-btn foot-btn">
-                    <a href="#contact">お問い合わせフォーム</a>
-                </div>
             </div>
 
             <div className="column">
