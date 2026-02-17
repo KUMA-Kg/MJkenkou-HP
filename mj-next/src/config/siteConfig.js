@@ -4,7 +4,7 @@ export const siteConfig = {
     logoPath: "/images/logo.jpg",
     tel: "048-423-0547",
     telLink: "tel:048-423-0547",
-    address: "〒332-0002 埼玉県川口市弥平2-17-19",
+    address: "〒333-0848 埼玉県川口市弥平2-17-19",
   },
 
   theme: {
