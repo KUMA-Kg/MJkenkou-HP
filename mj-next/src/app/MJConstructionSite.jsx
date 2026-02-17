@@ -836,7 +836,7 @@ const MJConstructionSite = () => {
         <header id="header">
           <div className="head-logo">
             <a href="#">
-              <img src="logo.jpg" alt="株式会社エムジェイ建工" />
+              <img src="logo.png" alt="株式会社エムジェイ建工" />
             </a>
           </div>
           <div className="header-action">
