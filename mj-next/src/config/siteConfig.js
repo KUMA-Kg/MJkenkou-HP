@@ -35,7 +35,7 @@ export const siteConfig = {
     ],
     mapEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.2727586559404!2d139.71284207629924!3d35.7502890728089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5c5c5c5c5c%3A0x5c5c5c5c5c5c5c5c!2z5Z-8546J55yM5bed5Y-j5biC6Iqd5LiL77yS5LiB55uu77yR77yX4oiS77yR77yZ!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp",
-    image: "/images/about_visual_new_v2.png",
+    image: "/images/about_visual_new_v3.png",
   },
 
   policy: {
