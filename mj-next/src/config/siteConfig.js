@@ -51,13 +51,13 @@ export const siteConfig = {
         title: "❖ 宅地造成工事 ❖",
         desc:
           "高低差のある土地の平坦化や、不要な樹木の撤去、土留め（擁壁）の設置を行い、建物を建てるのに最適な状態へと整えます。",
-        image: "/images/business_land_v2.png",
+        image: "/images/business_land_v3.png",
       },
       {
         title: "❖ 舗装工事 ❖",
         desc:
           "日々の暮らしに欠かせない道路や、駐車場、歩道などの舗装工事を行っています。\n単にアスファルトを敷くだけでなく、スムーズな排水や耐久性を考慮した「質の高い施工」で、安全で快適なインフラを支えます。",
-        image: "/images/business_road_new_v2.png",
+        image: "/images/business_road_new.png",
       },
     ],
   },
