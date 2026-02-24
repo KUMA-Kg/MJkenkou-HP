@@ -11,8 +11,8 @@ const Header = ({ cfg }) => {
                 <div className="head-logo">
                     <a href="#" className="flex items-center gap-3">
                         <img src={cfg.brand.logoPath} alt={cfg.brand.companyName} />
-                        <span className="font-bold text-sm md:text-base whitespace-nowrap">
-                            株式会社MJ建工
+                        <span className="inline-block font-bold text-sm md:text-base whitespace-nowrap leading-tight">
+                            株式会社エムジェイ建工
                         </span>
                     </a>
                 </div>
