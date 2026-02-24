@@ -9,8 +9,11 @@ const Header = ({ cfg }) => {
         <div className={isMenuOpen ? 'is-opened' : ''}>
             <header id="header">
                 <div className="head-logo">
-                    <a href="#">
+                    <a href="#" className="flex items-center gap-3">
                         <img src={cfg.brand.logoPath} alt={cfg.brand.companyName} />
+                        <span className="font-bold text-sm md:text-base whitespace-nowrap">
+                            株式会社MJ建工
+                        </span>
                     </a>
                 </div>
                 <div className="header-action">
