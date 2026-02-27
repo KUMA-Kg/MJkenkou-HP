@@ -7,6 +7,7 @@ import Business from "../components/Business";
 import Recruit from "../components/Recruit";
 import Sdgs from "../components/Sdgs";
 import Footer from "../components/Footer";
+import Contact from "../components/Contact";
 
 export default function Page() {
   return (
