@@ -21,6 +21,7 @@ export default function Page() {
         <Business cfg={siteConfig} />
         <Recruit cfg={siteConfig} />
         <Sdgs cfg={siteConfig} />
+        <Contact cfg={siteConfig} />
       </main>
       <Footer cfg={siteConfig} />
     </>
