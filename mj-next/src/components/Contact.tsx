@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 
 type Props = {
   cfg?: any;
@@ -7,45 +7,56 @@ type Props = {
 
 export default function Contact({ cfg }: Props) {
   const toEmail = "mjkk.contact@gmail.com";
+
   const [name, setName] = useState("");
   const [tel, setTel] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const mailtoHref = useMemo(() => {
-    const subject = `【お問い合わせ】${name || "お客様"}様`;
-    const bodyLines = [
-      "お問い合わせが届きました。",
-      "",
-      `■お名前：${name}`,
-      `■電話番号：${tel}`,
-      `■メール：${email}`,
-      "",
-      "■お問い合わせ内容",
-      message,
-      "",
-      "（このメールはWebサイトのお問い合わせフォームから作成されました）",
-    ];
-    const body = bodyLines.join("\n");
+  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState("");
 
-    // mailto はURLエンコード必須
-    const params = new URLSearchParams({
-      subject,
-      body,
-    });
-
-    return `mailto:${toEmail}?${params.toString()}`;
-  }, [name, tel, email, message]);
-
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 入力チェック（最低限）
+
     if (!message.trim()) {
       alert("お問い合わせ内容を入力してください。");
       return;
     }
-    // メーラー起動
-    window.location.href = mailtoHref;
+
+    try {
+      setIsSending(true);
+      setStatus("");
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          tel,
+          email,
+          message,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || "送信に失敗しました。");
+      }
+
+      setStatus("送信しました。ありがとうございます。");
+      setName("");
+      setTel("");
+      setEmail("");
+      setMessage("");
+    } catch (err: any) {
+      setStatus(err.message || "送信に失敗しました。");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -79,6 +90,7 @@ export default function Contact({ cfg }: Props) {
           <label>
             メールアドレス
             <input
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="例）example@gmail.com"
@@ -98,13 +110,11 @@ export default function Contact({ cfg }: Props) {
             />
           </label>
 
-          <button type="submit" style={buttonStyle}>
-            メールを作成して送る
+          <button type="submit" style={buttonStyle} disabled={isSending}>
+            {isSending ? "送信中..." : "送信する"}
           </button>
 
-          <p style={{ fontSize: 12, opacity: 0.75 }}>
-            ※送信ボタンを押すとメールアプリが開きます。メール送信は端末側で行われます。
-          </p>
+          {status && <p style={{ fontSize: 13 }}>{status}</p>}
 
           <p style={{ fontSize: 12 }}>
             直接メール：{" "}
