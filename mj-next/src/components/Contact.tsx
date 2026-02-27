@@ -41,11 +41,22 @@ export default function Contact({ cfg }: Props) {
         }),
       });
 
-      const data = await res.json();
+const raw = await res.text();
 
-      if (!res.ok || !data.ok) {
-        throw new Error(data.error || "送信に失敗しました。");
-      }
+let data = null;
+try {
+  data = raw ? JSON.parse(raw) : null;
+} catch {
+  data = null;
+}
+
+if (!res.ok) {
+  throw new Error(data?.error || raw || "送信に失敗しました。");
+}
+
+if (!data?.ok) {
+  throw new Error(data?.error || "送信に失敗しました。");
+}
 
       setStatus("送信しました。ありがとうございます。");
       setName("");
