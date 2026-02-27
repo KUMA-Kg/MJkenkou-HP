@@ -6,8 +6,9 @@ import Policy from "../components/Policy";
 import Business from "../components/Business";
 import Recruit from "../components/Recruit";
 import Sdgs from "../components/Sdgs";
-import Footer from "../components/Footer";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
+
 
 export default function Page() {
   return (
