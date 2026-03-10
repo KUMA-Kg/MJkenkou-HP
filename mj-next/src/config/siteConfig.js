@@ -16,7 +16,7 @@ export const siteConfig = {
   },
 
   hero: {
-    image: "/images/hero_visual_v2.png",
+    image: "/images/hero_visual_v3.png",
     headlineHtml: "誠実な技術で、この街の未来に確かな安心を",
   },
 
