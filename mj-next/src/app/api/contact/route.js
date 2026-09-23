@@ -17,7 +17,7 @@ export async function POST(req) {
       },
       body: JSON.stringify({
         from: process.env.CONTACT_FROM,
-        to: ["keijikuma02@gmail.com"],
+        to: ["mjkk.contact@gmail.com"],
         reply_to: email || undefined,
         subject: `【お問い合わせ】${name || "お客様"}`,
         text: [
